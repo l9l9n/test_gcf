@@ -3,11 +3,35 @@
 
 # IntelliJ project files
 .idea
+.idea/vcs.xml
+.idea/misc.xml
 *.iml
 out
 gen
+*.log
+*.pot
+*.pyc
+*.bak
+
+# Python #
+*.py[cod]
+*$py.class
 
 __pycache__
+__pycache__/
+
+
+media
+media/
+migrations/
 
 db.sqlite3
-venv
+
+# Environments
+#.env
+#env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+

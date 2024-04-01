@@ -17,6 +17,7 @@ class Collect(models.Model):
     contributors_count_donations = models.PositiveIntegerField(default=0, verbose_name='Количество участников')
     image_cover = models.ImageField(upload_to='cover', verbose_name='Обложка сбора')
     end_date = models.DateTimeField(verbose_name='Дата и время завершения сбора')
+    objects = models.Manager()
 
     class Meta:
         verbose_name = 'Групповой сбор'
@@ -27,10 +28,13 @@ class Collect(models.Model):
 
 
 class Payment(models.Model):
-    collect = models.ForeignKey(Collect, on_delete=models.CASCADE, verbose_name='Групповой сбор')
+    collect = models.ForeignKey(Collect, on_delete=models.CASCADE, verbose_name='Групповой сбор',
+                                related_name='donations'
+                                )
     contributor = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Участник')
     amount = models.DecimalField(max_length=10, decimal_places=2, verbose_name='Сумма')
     timestamp = models.DateTimeField(auto_now_add=True)
+    objects = models.Manager()
 
     class Meta:
         verbose_name = 'Платёж сбора'
