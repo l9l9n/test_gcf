@@ -3,7 +3,6 @@
 
 # IntelliJ project files
 .idea
-../.idea/
 *.iml
 out
 gen
@@ -11,3 +10,4 @@ gen
 __pycache__
 
 db.sqlite3
+venv
