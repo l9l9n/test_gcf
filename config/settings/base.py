@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'rest_framework',
 
     # my_apps
-    'apps.cash_fees',
+    'apps.collects',
+    'apps.payments',
 ]
 
 MIDDLEWARE = [
@@ -136,4 +137,3 @@ CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000']
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
-
