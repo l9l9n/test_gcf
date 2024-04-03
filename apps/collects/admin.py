@@ -7,10 +7,12 @@ class CollectAdmin(admin.ModelAdmin):
     list_display = (
         'author',
         'title',
-        'occasion',
+        'choice_occasion',
+        'description',
         'target_amount',
-        'current_amount',
-        'contributors_count',
+        'collected_amount',
+        'contributors_count_donations',
+        'image_cover',
         'end_date'
     )
 

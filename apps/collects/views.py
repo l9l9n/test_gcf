@@ -3,8 +3,8 @@ from django.views.decorators.cache import cache_page
 
 from rest_framework import generics
 
-from models import Collect, Payment
-from serializers import CollectSerializer, PaymentSerializer
+from .models import Collect, Payment
+from .serializers import CollectSerializer, PaymentSerializer
 
 
 class CollectListAPIView(generics.ListAPIView):
@@ -19,5 +19,9 @@ class CollectListAPIView(generics.ListAPIView):
 class PaymentListAPIView(generics.ListAPIView):
     queryset = Payment.objects.all()
     serializer_class = PaymentSerializer
+
+    @method_decorator(cache_page(60))
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
 
 

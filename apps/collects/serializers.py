@@ -1,13 +1,13 @@
 from rest_framework import serializers
 
-from group_cash_fees.apps.collects.models import Collect, Payment
+from .models import Collect, Payment
 
 
 class CollectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Collect
         fields = (
-            'author_fees',
+            'author',
             'title',
             'choice_occasion',
             'description',

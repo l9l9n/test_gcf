@@ -8,12 +8,12 @@ class Collect(models.Model):
         ('marry', 'свадьба'),
     )
 
-    author_fees = models.CharField(max_length=90, verbose_name='Автор сбора')
+    author = models.CharField(max_length=90, verbose_name='Автор сбора')
     title = models.CharField(max_length=90, verbose_name='Название')
-    choice_occasion = models.CharField(verbose_name='Повод', choices=occasion)
+    choice_occasion = models.CharField(max_length=90, verbose_name='Повод', choices=occasion)
     description = models.TextField(verbose_name='Описание', max_length=400)
-    target_amount = models.DecimalField(max_length=15, decimal_places=2, verbose_name='Нужно собрать')
-    collected_amount = models.DecimalField(max_length=15, decimal_places=2, verbose_name='Собранная сумма', default=0)
+    target_amount = models.DecimalField(max_digits=17, max_length=15, decimal_places=2, verbose_name='Нужно собрать')
+    collected_amount = models.DecimalField(max_digits=17, max_length=15, decimal_places=2, verbose_name='Собранная сумма', default=0)
     contributors_count_donations = models.PositiveIntegerField(default=0, verbose_name='Количество участников')
     image_cover = models.ImageField(upload_to='cover', verbose_name='Обложка сбора')
     end_date = models.DateTimeField(verbose_name='Дата и время завершения сбора')
@@ -32,7 +32,7 @@ class Payment(models.Model):
                                 related_name='donations'
                                 )
     contributor = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Участник')
-    amount = models.DecimalField(max_length=10, decimal_places=2, verbose_name='Сумма')
+    amount = models.DecimalField(max_digits=13, max_length=10, decimal_places=2, verbose_name='Сумма')
     timestamp = models.DateTimeField(auto_now_add=True)
     objects = models.Manager()
 
